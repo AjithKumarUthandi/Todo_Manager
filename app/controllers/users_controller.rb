@@ -20,4 +20,15 @@ class UsersController < ApplicationController
     responce_text = "Hey your new user is created with the id #{new_user.id}"
     render plain: responce_text
   end
+
+  #Get request email and password
+  #find email is there. check the password is same
+  #if it is same responce true, otherwise responce false
+  def login
+    email = params[:email]
+    password = params[:password]
+    user = User.find_by(email: email)
+    is_valid_user_details = user.password == password
+    render plain: is_valid_user_details
+  end
 end
