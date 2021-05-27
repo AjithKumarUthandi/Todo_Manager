@@ -28,7 +28,11 @@ class UsersController < ApplicationController
     email = params[:email]
     password = params[:password]
     user = User.find_by(email: email)
-    is_valid_user_details = user.password == password
+
+    is_valid_user_details = false # assume first, email is not match
+
+    #if matched check password also match
+    is_valid_user_details = user.password == password if (user)
     render plain: is_valid_user_details
   end
 end
