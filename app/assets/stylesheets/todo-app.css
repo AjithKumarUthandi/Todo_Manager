@@ -78,15 +78,15 @@ body {
   align-items: center;
 }
 
+.TodoItem-dueDate {
+  margin-left: 10px;
+  color: #808080;
+  font-size: 12px;
+}
+
 .TodoItem-checkbox {
   width: 16px;
   height: 16px;
-}
-
-.TodoItem-overdueLabel {
-  margin-left: 10px;
-  color: #c53030;
-  font-size: 12px;
 }
 
 .TodoItem-dateLabel {

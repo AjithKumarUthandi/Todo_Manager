@@ -9,14 +9,6 @@ class Todo < ActiveRecord::Base
     all.map { |todo| todo.to_displayable_string }
   end
 
-  #display the value with id
-  #if completed, mentioned also the Todo
-  def to_displayable_string
-    display_status = completed ? "[X]" : "[ ]"
-    display_date = due_today? ? nil : due_date
-    "#{id}. #{display_status} #{todo_text} #{display_date}"
-  end
-
   #found overdue todos
   def self.overdue
     where("due_date < ?", Date.today)
@@ -30,6 +22,10 @@ class Todo < ActiveRecord::Base
   #found which todos have a days
   def self.due_later
     where("due_date > ?", Date.today)
+  end
+
+  def self.completed
+    all.where(completed: true)
   end
 
   #Display the Todo-list with patterns
@@ -48,11 +44,6 @@ class Todo < ActiveRecord::Base
     puts "Due Later\n"
     puts due_later.map { |todo| todo.to_displayable_string }
     puts "\n\n"
-  end
-
-  #insert a new Todo
-  def self.add_task(h)
-    create!(todo_text: h[:todo_text], due_date: Date.today + h[:due_in_days], completed: false)
   end
 
   #update Todo is completed with help of id
