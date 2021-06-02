@@ -4,11 +4,6 @@ class Todo < ActiveRecord::Base
     due_date == Date.today
   end
 
-  #From Todo-list get each Todo and send to_displayable_string
-  def self.to_displayable_list
-    all.map { |todo| todo.to_displayable_string }
-  end
-
   #found overdue todos
   def self.overdue
     where("due_date < ?", Date.today)
@@ -28,23 +23,23 @@ class Todo < ActiveRecord::Base
     all.where(completed: true)
   end
 
-  #Display the Todo-list with patterns
-  def self.show_list
-    date = Date.today
-    puts "My Todo-list\n\n"
+  # #Display the Todo-list with patterns
+  # def self.show_list
+  #   date = Date.today
+  #   puts "My Todo-list\n\n"
 
-    puts "Overdue\n"
-    puts overdue.map { |todo| todo.to_displayable_string }
-    puts "\n\n"
+  #   puts "Overdue\n"
+  #   puts overdue.map { |todo| todo.to_displayable_string }
+  #   puts "\n\n"
 
-    puts "Due Today\n"
-    puts due_today.map { |todo| todo.to_displayable_string }
-    puts "\n\n"
+  #   puts "Due Today\n"
+  #   puts due_today.map { |todo| todo.to_displayable_string }
+  #   puts "\n\n"
 
-    puts "Due Later\n"
-    puts due_later.map { |todo| todo.to_displayable_string }
-    puts "\n\n"
-  end
+  #   puts "Due Later\n"
+  #   puts due_later.map { |todo| todo.to_displayable_string }
+  #   puts "\n\n"
+  # end
 
   #update Todo is completed with help of id
   def self.mark_as_complete(todo_id)
@@ -58,10 +53,3 @@ class Todo < ActiveRecord::Base
     exit
   end
 end
-
-# class Todo < ActiveRecord::Base
-#   def to_pleasant_string
-#     is_completed = completed ? "[X]" : "[ ]"
-#     "#{id}. #{due_date.to_s(:short)} #{todo_text} #{is_completed}"
-#   end
-# end
