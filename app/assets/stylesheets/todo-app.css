@@ -89,10 +89,18 @@ body {
   height: 16px;
 }
 
+.TodoItem-checkbox input:checked {
+  background-color: #2196f3;
+}
+
 .TodoItem-dateLabel {
   margin-left: 10px;
   color: #808080;
   font-size: 12px;
+}
+
+.TodoItem-strikeOut {
+  text-decoration: line-through;
 }
 
 .TodoItem-container:hover {
