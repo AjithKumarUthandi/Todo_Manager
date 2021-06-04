@@ -13,28 +13,34 @@
 
   <ul>
     <% todos.all.each do |todo| %>
-    <% if show_completed_todo or !todo.completed %>
-      <li class="TodoItem">
-        <label class="TodoItem-container">
+      <% if show_completed_todo or !todo.completed %>
+        <li class="TodoItem">
+          <label class="TodoItem-container">
 
-        <% if todo.completed %>
-          <input class="TodoItem-checkbox" type="checkbox" checked />
-          <p class="TodoItem-strikeOut"> <%= todo.todo_text %> </p>
-        <% else %>
-          <input class="TodoItem-checkbox" type="checkbox" />
-          <%= todo.todo_text %>
-        <% end %>
+            <input class="TodoItem-checkbox"
+              type="checkbox"
+            <% if todo.completed %>
+              checked
+            <% end %>
+            />
 
-        <% if show_due_date %>
-          <p class="TodoItem-dueDate"> <%= todo.due_date.to_s(:short) %> </p>
-        <% end %>
+            <p
+            <% if todo.completed %>
+              class="TodoItem-strikeOut"
+            <% end %> >
+              <%= todo.todo_text %>
+            </p>
 
-          <a class="TodoItem-delete" href="javascript:void(0)">
-            <img src="trashcan.svg" />
-          </a>
-        </label>
-      </li>
-    <% end %>
+            <% if show_due_date %>
+              <p class="TodoItem-dueDate"> <%= todo.due_date.to_s(:short) %> </p>
+            <% end %>
+
+            <a class="TodoItem-delete" href="javascript:void(0)">
+              <img src="trashcan.svg" />
+            </a>
+          </label>
+        </li>
+      <% end %>
     <% end %>
   </ul>
 </section>
