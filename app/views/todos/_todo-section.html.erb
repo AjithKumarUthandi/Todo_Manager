@@ -11,12 +11,14 @@
       <li class="TodoItem">
         <label class="TodoItem-container">
 
-          <input class="TodoItem-checkbox"
-            type="checkbox"
-          <% if todo.completed %>
-            checked
+          <%= form_with(url: "/todos/#{todo.id}", method: "put") do %>
+            <input class="TodoItem-checkbox"
+              type="checkbox"
+              name="completed"
+              <% if todo.completed %> checked <% end %>
+              onclick="this.form.submit()"
+            />
           <% end %>
-          />
 
           <p
           <% if todo.completed %>
