@@ -11,18 +11,13 @@
       <li class="TodoItem">
         <label class="TodoItem-container">
 
-          <input class="TodoItem-checkbox"
-            type="checkbox"
-          <% if todo.completed %>
-            checked
-          <% end %>
-          />
+          <input class="TodoItem-Checkbox" type="checkbox" <%= todo.completed ? "checked" : "" %>>
 
           <p
-          <% if todo.completed %>
-            class="TodoItem-strikeOut"
-          <% end %> >
-            <%= todo.todo_text %>
+            <% if todo.completed %>
+              class="TodoItem-strikeOut"
+            <% end %> >
+              <%= todo.todo_text %>
           </p>
 
           <% if show_due_date %>
