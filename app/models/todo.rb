@@ -1,5 +1,5 @@
 class Todo < ActiveRecord::Base
-  belong_to :user
+  belongs_to :user
 
   #found overdue todos
   def self.overdue
