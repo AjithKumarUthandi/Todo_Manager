@@ -6,10 +6,6 @@ class Todo < ActiveRecord::Base
     where("due_date < ?  and (not completed)", Date.today).order(:due_date)
   end
 
-  def self.of_user(user)
-    all.where(user_id: user.id)
-  end
-
   #found today due todos
   def self.due_today
     where("due_date = ?", Date.today).order(:id)
