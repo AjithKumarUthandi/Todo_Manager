@@ -1,33 +1,25 @@
 class UsersController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  skip_before_action :ensure_user_logged_in
 
-  #index send the each value to User class n user.rb
-  #that return the each user details with patterns
-  def index
-    render plain: User.all.map { |user| user.to_pleasant_string }.join("\n")
+  def new
+    render "users/new"
   end
 
   #Add a new user
   def create
-    name = params[:name]
-    email = params[:email]
-    password = params[:password]
-    new_user = User.create!(
-      name: name,
-      email: email,
-      password: password,
+    new_user = User.new(
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      email: params[:email],
+      password: params[:password],
     )
-    responce_text = "Hey your new user is created with the id #{new_user.id}"
-    render plain: responce_text
-  end
 
-  #Get request email and password
-  #find email is there. check the password is same
-  #if it is same responce true, otherwise responce false
-  def login
-    email = params[:email]
-    password = params[:password]
-    user = User.where("email=? and password=?", email, password).first
-    render plain: user.present?
+    if (new_user.save)
+      session[:current_user_id] = new_user.id
+      redirect_to "/"
+    else
+      flash[:error] = new_user.errors.full_messages.join(", ")
+      redirect_to "/users/new"
+    end
   end
 end
