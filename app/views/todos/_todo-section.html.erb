@@ -22,9 +22,8 @@
           <% end %>
 
           <p
-          <% if todo.completed %>
-            class="TodoItem-strikeOut"
-          <% end %> >
+            <%= (todo.completed) ? "class=TodoItem-strikeOut" : "" %>
+          >
             <%= todo.todo_text %>
           </p>
 
