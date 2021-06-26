@@ -1,24 +1,18 @@
-# README
+# [Todo Manager](https://ajith-todo-manager-saas-201.herokuapp.com)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ This app is built to store user's todos-list by date and a user can view or mark completed or not completed in their own todos.
 
-Things you may want to cover:
+ ## Home page
+![HomePageImage](/Images/homepage.png)
+ - Before enter todopage, user must be [sign-in](https://ajith-todo-manager-saas-201.herokuapp.com/signin) the page.
+ - If you are new user, [sign-up](https://ajith-todo-manager-saas-201.herokuapp.com/users/new) and use.
 
-* Ruby version
+## Sign-up page
+![Sign-upPageImage](Images/sign-up.png)
 
-* System dependencies
+## Sign-in page
+![Sign-inPageImage](Images/sign-in.png)
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Todos page
+![TodosPageImage](Images/todopage.png)
+ - The todo-list divide by a period. past(Over due), present(Due today), Future(Due later)
